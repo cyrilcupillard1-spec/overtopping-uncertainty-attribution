@@ -14,7 +14,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-BASE = "https://hubeau.eaufrance.fr/api/v1/hydrometrie/obs_elab"  # si 404 : vérifier la version sur hubeau.eaufrance.fr
+BASE = "https://hubeau.eaufrance.fr/api/v2/hydrometrie/obs_elab"  # si 404 : vérifier la version sur hubeau.eaufrance.fr
 
 
 def fetch(code, debut, fin, taille=20000):
@@ -25,7 +25,7 @@ def fetch(code, debut, fin, taille=20000):
         d1 = min(d0 + pd.DateOffset(years=20) - pd.Timedelta(days=1), dfin)
         url, params = BASE, {
             "code_entite": code,
-            "grandeur_hydro_elab": "QmJ",
+            "grandeur_hydro_elab": "QmnJ",
             "date_debut_obs_elab": d0.strftime("%Y-%m-%d"),
             "date_fin_obs_elab": d1.strftime("%Y-%m-%d"),
             "size": taille,
